@@ -36,7 +36,7 @@
    
 </li>
 <li class="nav-item">
-<a class="btn ml-2 btn-danger" href="movimento.html">Deslogar</a></li>
+<a class="btn ml-2 btn-danger" href="index.html">Deslogar</a></li>
     </ul>
   </div>
 </nav>
