@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import static java.sql.DriverManager.println;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,12 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author theua
  */
-@WebServlet(urlPatterns = {"/cadastro"})
-public class cadastro extends HttpServlet {
+@WebServlet(urlPatterns = {"/Verificar"})
+public class Verificar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,8 +38,8 @@ public class cadastro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    }  
+        
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -49,7 +50,6 @@ public class cadastro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -66,33 +66,38 @@ public class cadastro extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       
-        
-         try {
-                       
+             throws ServletException, IOException {
+    
+        try {
+            
             String conta = request.getParameter("conta");
-            String cpf = request.getParameter("cpf");
+           
             Class.forName("com.mysql.jdbc.Driver");
             Connection c =  DriverManager.getConnection("jdbc:mysql://localhost/projeto","root","");
-            PreparedStatement  p =  c.prepareStatement("insert into cadastro (conta,cpf) values (?,?)");
-            p.setString(1, conta);
-            p.setString(2, cpf);
-            p.execute() ;
-            response.getWriter().print("Salvo com sucesso");
+            PreparedStatement  p =  c.prepareStatement("select * from cadastro where conta=? ");
+            p.setString(1, conta );
+            ResultSet rs = p.executeQuery();
+           // response.getWriter().print("Saelvo com sucesso");
             
-        } catch (SQLException ex) {
-          response.getWriter().print("Erro: " + ex.getMessage());
-          Logger.getLogger(cadastro.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(cadastro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-          
-           response.sendRedirect("movimento.html");     
-     
-    }
-    }
-
+            if(rs.next()) {         
  
+               response.sendRedirect("movimento.html");
+            
+            }else{
+               response.sendRedirect("login_erro.jsp");
+            }
+                
+      } catch (SQLException ex) {
 
+            Logger.getLogger(Verificar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Verificar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        
+    }
+
+   
+
+}

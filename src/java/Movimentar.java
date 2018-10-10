@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.util.Date;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import static java.sql.DriverManager.println;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author theua
  */
-@WebServlet(urlPatterns = {"/cadastro"})
-public class cadastro extends HttpServlet {
+@WebServlet(urlPatterns = {"/Movimentar"})
+public class Movimentar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,8 +36,9 @@ public class cadastro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    }  
+     
+        }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -49,7 +49,6 @@ public class cadastro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,17 +66,14 @@ public class cadastro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
-         try {
+        try {
                        
-            String conta = request.getParameter("conta");
-            String cpf = request.getParameter("cpf");
+            String movimento = request.getParameter("movimento");
+            
             Class.forName("com.mysql.jdbc.Driver");
             Connection c =  DriverManager.getConnection("jdbc:mysql://localhost/projeto","root","");
-            PreparedStatement  p =  c.prepareStatement("insert into cadastro (conta,cpf) values (?,?)");
-            p.setString(1, conta);
-            p.setString(2, cpf);
+            PreparedStatement  p =  c.prepareStatement("insert into operacao (valoroperacao,dataoperacao) values (?,now())");
+            p.setString(1, movimento);
             p.execute() ;
             response.getWriter().print("Salvo com sucesso");
             
@@ -89,10 +85,17 @@ public class cadastro extends HttpServlet {
         }
         
           
-           response.sendRedirect("movimento.html");     
-     
+              
+     response.sendRedirect("movimento.html"); 
     }
     }
+        
+        
+        
+    
 
- 
-
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
