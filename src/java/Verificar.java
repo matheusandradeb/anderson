@@ -81,7 +81,7 @@ public class Verificar extends HttpServlet {
             
             if(rs.next()) {         
  
-               response.sendRedirect("movimento.html");
+               response.sendRedirect("movimento.jsp");
             
             }else{
                response.sendRedirect("login_erro.jsp");

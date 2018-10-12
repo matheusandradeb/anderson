@@ -70,11 +70,16 @@ public class Movimentar extends HttpServlet {
         try {
                        
             String movimento = request.getParameter("movimento");
+            String cpf = request.getParameter("cpf");
+            String conta = request.getParameter("conta");
+            
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection c =  DriverManager.getConnection("jdbc:mysql://localhost/projeto","root","");
-            PreparedStatement  p =  c.prepareStatement("insert into operacao (valoroperacao,dataoperacao) values (?,now())");
+            PreparedStatement  p =  c.prepareStatement("insert into operacao (valoroperacao,dataoperacao,cpf,conta) values (?,now(),?,?)");
             p.setString(1, movimento);
+            p.setString(2, conta);
+            p.setString(3, cpf);
             p.execute() ;
             
             
@@ -87,7 +92,7 @@ public class Movimentar extends HttpServlet {
         
           
               
-     response.sendRedirect("movimento.html"); 
+     response.sendRedirect("movimento.jsp"); 
     }
     }
         

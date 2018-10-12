@@ -32,7 +32,7 @@
 <li class="nav-item active">
 
 </li>
-<li class="nav-item"><a class="nav-link" href="movimento.html">Movimento</a></li>
+<li class="nav-item"><a class="nav-link" href="movimento.jsp">Movimento</a></li>
 <li class="nav-item dropdown">
 	<a class="nav-link " href="extrato.jsp">Extrato</a>
    
@@ -56,6 +56,8 @@
 <table class="table table-striped table-responsive">
     <thead>
       <tr>
+        <th>Conta</th>
+        <th>Cpf Responsável</th>
         <th>Data da Operação</th>
         <th>Valor Operação</th>
         <% while (r.next()){ %>
@@ -63,7 +65,8 @@
     </thead>
     <tbody>
       <tr>
-        
+         <td><%=r.getString("conta")%> </td>  
+        <td><%=r.getString("cpf")%> </td>
         <td><%=r.getString("dataoperacao")%> </td>
         <td><%=r.getDouble("valoroperacao")%>R$ </td>
       </tr>
