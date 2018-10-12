@@ -96,7 +96,7 @@ Double Countrun;
   <h4> 
       <%Countrun = rs.getDouble(1);
     DecimalFormat df = new DecimalFormat("0.##");  
-    out.println("Valor: "+df.format(Countrun)+"R$");%>
+    out.println("Saldo: "+df.format(Countrun)+"R$");%>
   </h4>
 
 <%}
