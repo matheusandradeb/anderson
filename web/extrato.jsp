@@ -1,3 +1,5 @@
+
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.swing.JLabel"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -45,7 +47,7 @@
           try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection c =  DriverManager.getConnection("jdbc:mysql://localhost/projeto","root","");
-            PreparedStatement  p =  c.prepareStatement("select * from operacao");
+            PreparedStatement  p =  c.prepareStatement("select * from operacao ORDER BY idoperacao ASC LIMIT 100");
             ResultSet r =  p.executeQuery() ; %>
 
 <div class="container">
@@ -63,7 +65,7 @@
       <tr>
         
         <td><%=r.getString("dataoperacao")%> </td>
-        <td><%=r.getString("valoroperacao")%> </td>
+        <td><%=r.getDouble("valoroperacao")%>R$ </td>
       </tr>
       
       <%}
@@ -76,10 +78,27 @@
   </table>
   </div>
   <br><br><br>
-  
+  <%
+          try {
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projeto","root",""); 
+Statement st=con.createStatement();
+String strQuery = "SELECT SUM(valoroperacao) FROM operacao";
+ResultSet rs = st.executeQuery(strQuery);
+Double Countrun;
+
+  %>
   <div class="container">
-     
-  <h4>Saldo:  
-      
+      <%while(rs.next()){%>
+  <h4> 
+      <%Countrun = rs.getDouble(1);
+    DecimalFormat df = new DecimalFormat("0.##");  
+    out.println("Valor: "+df.format(Countrun)+"R$");%>
   </h4>
 
+<%}
+        } catch (Exception ex) {
+          response.getWriter().print("Erro: " + ex.getMessage());
+
+}
+%>
