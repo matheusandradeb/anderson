@@ -78,10 +78,10 @@ public class Movimentar extends HttpServlet {
             Connection c =  DriverManager.getConnection("jdbc:mysql://localhost/projeto","root","");
             PreparedStatement  p =  c.prepareStatement("insert into operacao (valoroperacao,dataoperacao,cpf,conta) values (?,now(),?,?)");
             p.setString(1, movimento);
-            p.setString(2, conta);
-            p.setString(3, cpf);
+            p.setString(2, cpf);
+            p.setString(3, conta);
             p.execute() ;
-            
+                
             
         } catch (SQLException ex) {
           response.getWriter().print("Erro: " + ex.getMessage());

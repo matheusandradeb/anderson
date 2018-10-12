@@ -39,7 +39,7 @@
                 <div class="card">
                   
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="Movimentar" method="post">
 						
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">N° Conta</label>
@@ -60,7 +60,7 @@
                             </div>
 							
                               <div class="form-group row">
-                                </i><label for="disabledTextInput" class="col-md-4 col-form-label text-md-right">Valor</label>
+                                <label for="disabledTextInput" class="col-md-4 col-form-label text-md-right">Valor</label>
                                 <div class="col-md-2">
                                     <input type="text" maxlength="10" id="password" class="form-control" name="movimento" required>
                                 </div>
