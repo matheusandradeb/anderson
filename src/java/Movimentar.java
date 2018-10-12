@@ -6,6 +6,7 @@
 import java.util.Date;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -75,7 +76,7 @@ public class Movimentar extends HttpServlet {
             PreparedStatement  p =  c.prepareStatement("insert into operacao (valoroperacao,dataoperacao) values (?,now())");
             p.setString(1, movimento);
             p.execute() ;
-            response.getWriter().print("Salvo com sucesso");
+            
             
         } catch (SQLException ex) {
           response.getWriter().print("Erro: " + ex.getMessage());
