@@ -3,7 +3,27 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+ <script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
 
+function somenteNumeros(num) {
+        var er = /[^0-9.-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+        campo.value ="";  
+        }
+    }
+</script>
 <style>
    body {
         background-color: #ffffff;
@@ -64,9 +84,9 @@
                  <div class="panel-body">
                      <form action="cadastro" method="post" role="form" class="form-signin">
                    				
-		  <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="14">
+		  <input type="text" name="cpf" class="form-control" onkeyup="somenteNumeros(this)" onKeyPress="formatar('###.###.###-##', this)" placeholder="CPF" maxlength="14">
                    
-                  <input class="form-control" placeholder="Conta" maxlength="8" name="conta" type="text" required="">
+                  <input class="form-control" placeholder="Conta" onkeyup="somenteNumeros(this)" onKeyPress="formatar('####-#', this)" maxlength="6" name="conta" type="text" required="">
                   <br>
                   
                   <input class="btn btn-small btn-success btn-block" type="submit" id="login" value="Cadastrar">
