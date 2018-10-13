@@ -89,7 +89,7 @@ public class cadastro extends HttpServlet {
         }
         
           
-           response.sendRedirect("movimento.jsp");     
+           response.sendRedirect("index.html");     
      
     }
     }
