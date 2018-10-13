@@ -37,6 +37,9 @@ function somenteNumeros(num) {
         background-color: #ffffff;
     }
 	
+   h6 {
+   color: #DF0101;
+}
 
     .form-signin input[type="text"] {
         margin-bottom: 5px;
@@ -99,8 +102,10 @@ function somenteNumeros(num) {
                   
                   <input class="btn btn-small btn-success btn-block" type="submit" id="login" value="Cadastrar">
 					
-                  <h6> Cadastro realizado com sucesso </h6>
+                 
                                 </form> 
+                      <h6 align="center"> Cadastro realizado com sucesso <a href="index.html" onClick="">Voltar</a> </h6>
+                      
                             </div>
                         </div>
                     </div>

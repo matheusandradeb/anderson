@@ -81,8 +81,8 @@ public class cadastro extends HttpServlet {
             p.setString(2, cpf);
             p.execute() ;
          
-            
-            
+            request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+            response.sendRedirect("index.html");
             
             
             
@@ -94,7 +94,7 @@ public class cadastro extends HttpServlet {
         }
         
           
-           response.sendRedirect("index.html");     
+                
      
     }
     }
