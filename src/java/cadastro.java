@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import static java.sql.DriverManager.println;
@@ -79,7 +80,11 @@ public class cadastro extends HttpServlet {
             p.setString(1, conta);
             p.setString(2, cpf);
             p.execute() ;
-            response.getWriter().print("Salvo com sucesso");
+         
+            
+            
+            
+            
             
         } catch (SQLException ex) {
           response.getWriter().print("Erro: " + ex.getMessage());

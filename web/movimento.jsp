@@ -7,6 +7,28 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+ <script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+
+function somenteNumeros(num) {
+        var er = /[^0-9.-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+        campo.value ="";  
+        }
+    }
+</script>
+
  <meta charset="UTF-8">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#"> <img class="logo" src="https://pt.seaicons.com/wp-content/uploads/2015/09/Money-Graph-icon.png" height="40"> Banco do Matheus</a>
@@ -44,7 +66,7 @@
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">N° Conta</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="conta"   class="form-control" name="conta" required autofocus>
+                                    <input type="text" id="conta" onkeyup="somenteNumeros(this)" onKeyPress="formatar('####-#', this)" maxlength="6" class="form-control" name="conta" required autofocus>
                                 </div>
 								
                             </div>
@@ -54,7 +76,7 @@
 							<div class="form-group row">
                                 <label  class="col-md-4 col-form-label text-md-right">CPF do Solicitante</label>
                                 <div class="col-md-3">
-                                    <input type="text" id="cpf" value="<%request.getParameter("cpf");%>" class="form-control" name="cpf" required>
+                                    <input type="text" id="cpf" onkeyup="somenteNumeros(this)" onKeyPress="formatar('###.###.###-##', this)" maxlength="14" class="form-control" name="cpf" required>
                                 </div>
 								
                             </div>
@@ -62,7 +84,7 @@
                               <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Valor</label>
                                 <div class="col-md-2">
-                                    <input type="text" maxlength="10" id="password" class="form-control" name="movimento" required>
+                                    <input type="text" maxlength="10" placeholder="Ex: 100.00" id="password" class="form-control" name="movimento" required>
                                 </div>
 								
                             </div>
