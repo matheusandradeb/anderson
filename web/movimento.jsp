@@ -44,23 +44,23 @@
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">N° Conta</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="conta"  class="form-control" name="conta" required autofocus>
+                                    <input type="text" id="conta"   class="form-control" name="conta" required autofocus>
                                 </div>
 								
                             </div>
                            
-                            
+                              
 							
 							<div class="form-group row">
-                                <label for="disabledTextInput" class="col-md-4 col-form-label text-md-right">CPF do Solicitante</label>
+                                <label  class="col-md-4 col-form-label text-md-right">CPF do Solicitante</label>
                                 <div class="col-md-3">
-                                    <input type="text" id="cpf"  class="form-control" name="cpf" required>
+                                    <input type="text" id="cpf" value="<%request.getParameter("cpf");%>" class="form-control" name="cpf" required>
                                 </div>
 								
                             </div>
 							
                               <div class="form-group row">
-                                <label for="disabledTextInput" class="col-md-4 col-form-label text-md-right">Valor</label>
+                                <label class="col-md-4 col-form-label text-md-right">Valor</label>
                                 <div class="col-md-2">
                                     <input type="text" maxlength="10" id="password" class="form-control" name="movimento" required>
                                 </div>
