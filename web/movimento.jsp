@@ -27,6 +27,8 @@ function somenteNumeros(num) {
         campo.value ="";  
         }
     }
+    
+  
 </script>
 
  <meta charset="UTF-8">
@@ -66,7 +68,7 @@ function somenteNumeros(num) {
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">N° Conta</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="conta" onkeyup="somenteNumeros(this)" onKeyPress="formatar('####-#', this)" maxlength="6" class="form-control" name="conta" required autofocus>
+                                    <input type="text" id="conta"  onkeyup="somenteNumeros(this)" onKeyPress="formatar('####-#', this)" maxlength="6" class="form-control" name="conta" required autofocus>
                                 </div>
 								
                             </div>
@@ -76,7 +78,7 @@ function somenteNumeros(num) {
 							<div class="form-group row">
                                 <label  class="col-md-4 col-form-label text-md-right">CPF do Solicitante</label>
                                 <div class="col-md-3">
-                                    <input type="text" id="cpf" onkeyup="somenteNumeros(this)" onKeyPress="formatar('###.###.###-##', this)" maxlength="14" class="form-control" name="cpf" required>
+                                    <input type="text" id="cpf"  onkeyup="somenteNumeros(this)" onKeyPress="formatar('###.###.###-##', this)" maxlength="14" class="form-control" name="cpf" required>
                                 </div>
 								
                             </div>
@@ -84,7 +86,7 @@ function somenteNumeros(num) {
                               <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Valor</label>
                                 <div class="col-md-2">
-                                    <input type="text" maxlength="10" placeholder="Ex: 100.00" id="password" class="form-control" name="movimento" required>
+                                    <input type="text" maxlength="10" onkeyup="somenteNumeros(this)" placeholder="Ex: 100.00" id="password" class="form-control" name="movimento" required>
                                 </div>
 								
                             </div>
