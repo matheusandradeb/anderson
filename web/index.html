@@ -3,6 +3,28 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 
+ <script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+
+function somenteNumeros(num) {
+        var er = /[^0-9.-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+        campo.value ="";  
+        }
+    }
+</script>
+
 <style>
    body {
         background-color: #ffffff;
@@ -62,10 +84,10 @@
                   <form method="post" action="Verificar" role="form" class="form-signin">
                                   
                                         
-         <input class="form-control" placeholder="Conta" name="conta"  type="text" >
+         <input class="form-control" placeholder="Conta" onkeyup="somenteNumeros(this)" onKeyPress="formatar('####-#', this)" maxlength="6" name="conta"  type="text" >
          <br>
-         <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Logar">
-	 <a href="cadastro.html" onClick="">Cadastre-se</a>
+         <input class="btn btn-lg btn-success btn-block"  type="submit" id="login" value="Logar">
+	 <a href="cadastro.html" onClick="">Crie uma nova conta</a>
                                     
                                 </form>
                             </div>
