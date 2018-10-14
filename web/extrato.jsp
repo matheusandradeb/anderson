@@ -1,4 +1,8 @@
+<!-- Sistema Bancário 1.0
 
+Autor:Matheus Barreto Andrade
+
+-->
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.swing.JLabel"%>
 <%@page import="java.sql.Statement"%>

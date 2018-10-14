@@ -1,4 +1,8 @@
+<!-- Sistema Bancário 1.0
 
+Autor:Matheus Barreto Andrade
+
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
